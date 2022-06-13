@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import string
 from random import *
+import pyperclip
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -10,7 +11,10 @@ characters = string.ascii_letters + string.punctuation  + string.digits
 
 def gen_pass():
 	passw =  "".join(choice(characters) for _ in range(randint(8, 16)))
-	print(passw)
+	#print(passw)
+	
+	pyperclip.copy(passw)
+	pass_entry.insert(0, passw)
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -32,6 +36,7 @@ def save_inf():
 				web_entry.delete(0, END)
 				email_username_entry.delete(0, END)
 				pass_entry.delete(0, END)
+				messagebox.showinfo(title="Success", message="Login Credentials Saved Successfully.")
 
 
 
